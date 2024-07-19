@@ -26,3 +26,13 @@ Milestone 5 - opzionale
 ● Cancella messaggio: cliccando sul messaggio appare un menu a tendina che
 permette di cancellare il messaggio selezionato
 ● Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
+
+# Scomposizione del problema
+
+Milestone 1: 
+
+Setting dell'istanza di applicazione
+
+Setting di un array di oggetti come data
+
+Utilizzo di V-for per inserire img e name dell'utente nellalista contatti
