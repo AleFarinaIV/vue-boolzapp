@@ -41,3 +41,27 @@ body {
 .top_bg_color {
     background-color: #E6E6E6;
 }
+
+.baby_blue_bg {
+    background-color: #8DD7FA;
+}
+
+.baby_blue_color {
+    color: #8DD7FA;
+    padding: 11px;
+    font-size: 16px;
+}
+
+a {
+    font-size: 12px;
+}
+
+span {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+input::placeholder {
+    font-size: 12px;
+    font-weight: bolder;
+}
