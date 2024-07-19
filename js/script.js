@@ -160,7 +160,10 @@ createApp({
                     ],
                 }
             ],
-            index: 0,
+            current_chat: 0,
         };
+    },
+    methods: {
+        
     }
 }).mount('#app')
