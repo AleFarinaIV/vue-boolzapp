@@ -32,7 +32,7 @@
                             </div>
                             <div class="p-2">
                                 <i class="fa-solid fa-circle-notch"></i>
-                                <i class="fa-solid fa-message mx-2"></i>
+                                <i class="fa-solid fa-message mx-3"></i>
                                 <i class="fa-solid fa-ellipsis-vertical me-2"></i>
                             </div>
                         </div>
@@ -60,17 +60,17 @@
                         <!-- Lista contatti -->
                         <div>
                             <ul>
-                                <li>
+                                <li v-for="elem, index in contacts">
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="p-2">
-                                                <img class="circle_img" src="./img/avatar_1.jpg" alt="">
+                                                <img class="circle_img" :src="elem.avatar" alt="">
                                             </div>
                                         </div>
                                         <div class="col-10 ps-0">
                                             <div class="d-flex justify-content-between">
                                                 <div>
-                                                    <span>Michele</span>
+                                                    <span>{{ elem.name }}</span>
                                                     <p>Ultimo messaggio inviato</p>
                                                 </div>
                                                 <div>
@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <div class="row border-top">
                                         <div class="col-2">
                                             <div class="p-2">
@@ -219,7 +219,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -239,7 +239,7 @@
                                     </div>
                                     <div class="p-2">
                                         <i class="fa-solid fa-magnifying-glass"></i>
-                                        <i class="fa-solid fa-paperclip mx-2"></i>
+                                        <i class="fa-solid fa-paperclip mx-3"></i>
                                         <i class="fa-solid fa-ellipsis-vertical me-2"></i>
                                     </div>
                                 </div>
@@ -247,20 +247,23 @@
                                 <div id="open_chat">
                                     <div class="d-flex flex-column">
                                         <div>
-                                            <div class="user_message my-2 p-1 rounded">
-                                                <p class="m-1">Hai portato a spasso il cane?</p>
+                                            <div class="my-2 p-1 rounded" :class="contacts[0].messages[0].status == 'sent' 
+                                            ? 'user_message' : 'contact_message' ">
+                                                <p class="m-1">{{contacts[0].messages[0].message}}</p>
                                                 <p class="m-0 text-end text-secondary">15:30</p>
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="user_message my-2 p-1 rounded">
-                                                <p class="m-1">Ricordati di stendere i panni</p>
+                                            <div class="my-2 p-1 rounded" :class="contacts[0].messages[1].status == 'sent' 
+                                            ? 'user_message' : 'contact_message' ">
+                                                <p class="m-1">{{contacts[0].messages[1].message}}</p>
                                                 <p class="m-0 text-end text-secondary">15:30</p>
                                             </div>
                                         </div>
                                         <div>
-                                            <div class="contact_message my-2 p-1 rounded">
-                                                <p class="m-1">Tutto fatto!</p>
+                                            <div class="my-2 p-1 rounded" :class="contacts[0].messages[2].status == 'sent' 
+                                            ? 'user_message' : 'contact_message' ">
+                                                <p class="m-1">{{contacts[0].messages[2].message}}</p>
                                                 <p class="m-0 text-end text-secondary">15:30</p>
                                             </div>
                                         </div>
