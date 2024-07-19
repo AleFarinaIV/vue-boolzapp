@@ -82,6 +82,16 @@ ul {
     padding: 0;
 }
 
+li:hover {
+    background-color: #cfcfcf;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.clicked {
+    background-color: #cfcfcf;
+}
+
 #open_chat {
     padding: 30px;
 }

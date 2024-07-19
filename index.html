@@ -60,7 +60,7 @@
                         <!-- Lista contatti -->
                         <div>
                             <ul>
-                                <li v-for="elem, index in contacts">
+                                <li id="contact" v-for="elem, index in contacts" @click="contactClick(index)" :class="current_chat == index ? 'clicked' : '' ">
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="p-2">
@@ -231,9 +231,9 @@
                                 <!-- Icon e name del contatto, iconcine -->
                                 <div class="d-flex justify-content-between align-items-center top_bg_color">
                                     <div class="p-2 d-flex align-items-center">
-                                        <img class="circle_img" src="./img/avatar_1.jpg" alt="">
+                                        <img class="circle_img" :src="contacts[current_chat].avatar" alt="">
                                         <div class="d-flex justify-content-center flex-column ms-2">
-                                            <span>Michele</span> <!-- Qui andranno inseriti i nomi dei vari contatti presi dall'array di oggetti -->
+                                            <span>{{ contacts[current_chat].name }}</span> <!-- Qui andranno inseriti i nomi dei vari contatti presi dall'array di oggetti -->
                                             <p class="m-0">Ultimo accesso oggi alle</p>
                                         </div>
                                     </div>
@@ -249,7 +249,7 @@
                                         <div v-for="message, index in contacts[current_chat].messages">
                                             <div class="my-2 p-1 rounded" :class="message.status === 'sent' ? 'user_message' : 'contact_message'">
                                                 <p class="m-1">{{ message.message }}</p>
-                                                <p class="m-0 text-end text-secondary">15:30</p>
+                                                <p class="m-0 text-end text-secondary">{{message.date}}</p>
                                             </div>
                                         </div>
                                     </div>

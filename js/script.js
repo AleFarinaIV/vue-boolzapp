@@ -164,6 +164,9 @@ createApp({
         };
     },
     methods: {
-        
+        contactClick(index) {
+            this.current_chat = index;
+            console.log('contact clicked', index);
+        }
     }
 }).mount('#app')
