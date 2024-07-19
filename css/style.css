@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+    background: #009687;
+    background: linear-gradient(to bottom, #009687 0px, 
+    #009687 100px, 
+    #D7D8D3 50px,
+    #D7D8D3 150px);
+    padding: 20px 150px;
+}
+
+.container {
+    height: 650px;
+}
+
+.row {
+    height: 100%;
+}
+
+.col-4,
+.col-8 {
+    border: 1px solid black;
+}
