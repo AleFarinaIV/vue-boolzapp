@@ -12,7 +12,7 @@ body {
     height: 100%;
     background: #009687;
     background: linear-gradient(to bottom, #009687 0px, 
-    #009687 100px, 
+    #009687 125px, 
     #D7D8D3 50px,
     #D7D8D3 150px);
     padding: 20px 150px;
@@ -29,4 +29,15 @@ body {
 .col-4,
 .col-8 {
     border: 1px solid black;
+    padding: 0;
+}
+
+.circle_img {
+    max-width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.top_bg_color {
+    background-color: #E6E6E6;
 }
