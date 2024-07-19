@@ -36,3 +36,11 @@ Setting dell'istanza di applicazione
 Setting di un array di oggetti come data
 
 Utilizzo di V-for per inserire img e name dell'utente nellalista contatti
+
+Milestone 2:
+
+current_chat counter as data
+
+Dichiaro una funzione per il click del contatto con apertura diretta della chat
+
+All'apertura della chat visualizzare a schermo i messaggi con il contatto
