@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+}
+
+#app {
+    height: 100%;
+    background: #009687;
+    background: linear-gradient(to bottom, #009687 0px, 
+    #009687 125px, 
+    #D7D8D3 50px,
+    #D7D8D3 150px);
+    padding: 20px 150px;
+}
+
+.container {
+    height: 650px;
+}
+
+.col-4,
+.col-8 {
+    height: 100%;
+    padding: 0;
+}
+
+.col-8 {
+    background-image: url(../img/mine.jpg);
+}
+
+.circle_img {
+    max-width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.top_bg_color {
+    background-color: #E6E6E6;
+}
+
+.baby_blue_bg {
+    background-color: #8DD7FA;
+}
+
+.baby_blue_color {
+    color: #8DD7FA;
+    padding: 11px;
+    font-size: 16px;
+}
+
+a {
+    font-size: 12px;
+}
+
+p {
+    font-size: 10px;
+    font-weight: lighter;
+    color: grey;
+}
+
+span {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+input::placeholder {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.time_last_message {
+    font-size: 10px;
+    color: grey;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-height: 475px;
+    min-height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+li:hover {
+    background-color: #cfcfcf;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.clicked {
+    background-color: #cfcfcf;
+}
+
+#open_chat {
+    padding: 30px;
+    max-height: 539px;
+    overflow-y: auto;
+}
+
+.input-group span {
+    background-color: transparent;
+}
+
+.user_message {
+    background-color: #D2F5BB;
+    float: right;
+    min-width: 200px;
+}
+
+.contact_message {
+    background-color: #F5F5F5;
+    float: left;
+    min-width: 200px;
+}
+
+i:hover {
+    cursor: pointer;
+}
