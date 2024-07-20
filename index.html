@@ -60,7 +60,8 @@
                         <!-- Lista contatti -->
                         <div>
                             <ul>
-                                <li id="contact" v-for="elem, index in contacts" @click="contactClick(index)" :class="current_chat == index ? 'clicked' : '' ">
+                                <li id="contact" v-for="elem, index in contacts" @click="contactClick(index)" 
+                                class="border-top py-2" :class="current_chat == index ? 'clicked' : '' ">
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="p-2">
@@ -264,10 +265,10 @@
                                                 <i class="fa-regular fa-face-smile"></i>
                                             </span>
                                         </div>
-                                        <input type="text" class="form-control rounded" placeholder="Scrivi un messaggio">
+                                        <input type="text" class="form-control rounded" placeholder="Scrivi un messaggio" v-model="new_message" @keyup.enter="newMessage()">
                                         <div class="input-group-append">
                                             <span class="input-group-text mx-3 border-0 text-secondary">
-                                                <i class="fa-solid fa-microphone"></i>
+                                                <i class="fa-solid fa-microphone" @click="newMessage()"></i>
                                             </span>
                                         </div>
                                     </div>

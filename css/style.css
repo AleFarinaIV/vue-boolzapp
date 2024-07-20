@@ -80,6 +80,10 @@ input::placeholder {
 ul {
     list-style-type: none;
     padding: 0;
+    max-height: 475px;
+    min-height: 475px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 li:hover {
@@ -94,6 +98,8 @@ li:hover {
 
 #open_chat {
     padding: 30px;
+    max-height: 539px;
+    overflow-y: auto;
 }
 
 .input-group span {

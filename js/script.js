@@ -161,12 +161,38 @@ createApp({
                 }
             ],
             current_chat: 0,
+            new_message: null,
         };
     },
     methods: {
         contactClick(index) {
             this.current_chat = index;
             console.log('contact clicked', index);
+        },
+        newMessage() {
+            let new_message_added = {
+                message: this.new_message,
+                status: 'sent',
+            };
+
+            let contact_answer = {
+                message: 'Ok',
+                status: 'received',
+            };
+            
+            if(!this.new_message == '') {
+                this.contacts[this.current_chat].messages.push(new_message_added);
+
+                // risposta da parte del contact con un setTimeout
+                setTimeout(() => {
+                    this.contacts[this.current_chat].messages.push(contact_answer);
+                }, 1000);
+
+                // rimuove il testo inserito nell'input dopo l'invio
+                this.new_message = '';
+            }
+
+            this.new_message = null;
         }
     }
 }).mount('#app')
