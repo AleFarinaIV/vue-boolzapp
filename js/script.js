@@ -162,12 +162,21 @@ createApp({
             ],
             current_chat: 0,
             new_message: null,
+            contact_search: '',
+            filtered_contacts: [],
         };
     },
+    created() {
+        this.filterContacts();
+    },
     methods: {
-        contactClick(index) {
-            this.current_chat = index;
-            console.log('contact clicked', index);
+        getContactId(contact) {
+            return this.contacts.indexOf(contact);
+        },
+
+        contactClick(contact) {
+            this.current_chat = this.getContactId(contact);
+            console.log('contact clicked', this.current_chat);
         },
         newMessage() {
             let new_message_added = {
@@ -183,16 +192,20 @@ createApp({
             if(!this.new_message == '') {
                 this.contacts[this.current_chat].messages.push(new_message_added);
 
-                // risposta da parte del contact con un setTimeout
                 setTimeout(() => {
                     this.contacts[this.current_chat].messages.push(contact_answer);
                 }, 1000);
 
-                // rimuove il testo inserito nell'input dopo l'invio
                 this.new_message = '';
             }
 
             this.new_message = null;
-        }
+        },
+
+        filterContacts() {
+            this.filtered_contacts = this.contacts.filter(contact =>
+                contact.name.toLowerCase().includes(this.contact_search.toLowerCase())
+            )
+        },        
     }
 }).mount('#app')

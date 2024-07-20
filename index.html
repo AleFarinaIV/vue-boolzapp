@@ -28,7 +28,7 @@
                         <div class="d-flex justify-content-between align-items-center top_bg_color border-end border-light">
                             <div class="p-2">
                                 <img class="circle_img" src="./img/avatar_io.jpg" alt="">
-                                <span>Sofia</span>
+                                <span class="ms-2">Sofia</span>
                             </div>
                             <div class="p-2">
                                 <i class="fa-solid fa-circle-notch"></i>
@@ -54,14 +54,15 @@
                                 <button class="btn bg-white border-light-subtle px-4" type="button" id="button-addon1">
                                     <i class="fa-solid fa-magnifying-glass fa-sm"></i>
                                 </button>
-                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" v-model="contact_search" 
+                                @input="filterContacts" aria-label="Example text with button addon" aria-describedby="button-addon1">
                             </div>
                         </div>
                         <!-- Lista contatti -->
                         <div>
                             <ul>
-                                <li id="contact" v-for="elem, index in contacts" @click="contactClick(index)" 
-                                class="border-top py-2" :class="current_chat == index ? 'clicked' : '' ">
+                                <li id="contact" v-for="elem in filtered_contacts" @click="contactClick(elem)" 
+                                class="border-top py-2" :class="current_chat == getContactId(elem) ? 'clicked' : '' ">
                                     <div class="row">
                                         <div class="col-2">
                                             <div class="p-2">
@@ -268,7 +269,7 @@
                                         <input type="text" class="form-control rounded" placeholder="Scrivi un messaggio" v-model="new_message" @keyup.enter="newMessage()">
                                         <div class="input-group-append">
                                             <span class="input-group-text mx-3 border-0 text-secondary">
-                                                <i class="fa-solid fa-microphone" @click="newMessage()"></i>
+                                                <i class="fa-solid fa-microphone"></i>
                                             </span>
                                         </div>
                                     </div>

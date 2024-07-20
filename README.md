@@ -57,8 +57,8 @@ Dichiaro due nuove coppie chiave:valore as data; una stringa vuota per la ricerc
 
 Dichiaro una funzione per ottenere l'indice di un contatto
 
-Dichiaro una funzione per il click del conttatto
+Dichiaro una funzione per il click del contatto
 
-Dichairo una funzione per filtrare la lista contatti
+Dichiaro una funzione per filtrare la lista contatti
 
 Passo il tutto nel DOM con l'utilizzo delle corrette direttive Vue
