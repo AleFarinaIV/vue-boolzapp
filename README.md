@@ -44,3 +44,21 @@ current_chat counter as data
 Dichiaro una funzione per il click del contatto con apertura diretta della chat
 
 All'apertura della chat visualizzare a schermo i messaggi con il contatto
+
+Milestone 3:
+
+Dichiaro una funzione per la creazione di un nuovo messaggio da parte dell'utente, di una risposta del contatto e il reset del tutto dopo l'invio
+
+Tramite input do la possibilità di scrittura e con pulsante 'Enter' da tastiera dell'invio del messaggio
+
+Milestone 4:
+
+Dichiaro due nuove coppie chiave:valore as data; una stringa vuota per la ricerca del contatto e un array vuoto per i contatti filtrati
+
+Dichiaro una funzione per ottenere l'indice di un contatto
+
+Dichiaro una funzione per il click del conttatto
+
+Dichairo una funzione per filtrare la lista contatti
+
+Passo il tutto nel DOM con l'utilizzo delle corrette direttive Vue
