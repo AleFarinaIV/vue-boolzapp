@@ -76,7 +76,7 @@
                                                     <p>{{ getLastMessage(elem).message }}</p>
                                                 </div>
                                                 <div>
-                                                    <p class="time_last_message me-2 mt-1">{{ getLastMessage(elem).date.split(' ')[1] }}</p>
+                                                    <p class="time_last_message me-2 mt-1">{{ getLastMessage(elem).date.split(' ')[1].slice(0, 5) }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -236,7 +236,7 @@
                                         <img class="circle_img" :src="contacts[current_chat].avatar" alt="">
                                         <div class="d-flex justify-content-center flex-column ms-2">
                                             <span>{{ contacts[current_chat].name }}</span> <!-- Qui andranno inseriti i nomi dei vari contatti presi dall'array di oggetti -->
-                                            <p id="contact_online" class="m-0">Ultimo accesso oggi alle {{ contacts[current_chat].messages[contacts[current_chat].messages.length - 1].date.split(' ')[1] }}</p>
+                                            <p id="contact_online" class="m-0">Ultimo accesso oggi alle {{ contacts[current_chat].messages[contacts[current_chat].messages.length - 1].date.split(' ')[1].slice(0, 5) }}</p>
                                         </div>
                                     </div>
                                     <div class="p-2">
@@ -261,7 +261,7 @@
                                                             <li><a class="dropdown-item" href="#" @click="deleteAnyMessage(current_chat, messageIndex)">Delete Message</a></li>
                                                         </ul>
                                                     </div>
-                                                    <p class="m-0 text-end text-secondary">{{message.date.split(' ')[1] }}</p>
+                                                    <p class="m-0 text-end text-secondary">{{message.date.split(' ')[1].slice(0, 5) }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,11 +273,16 @@
                                 <div id="input-section" class="top_bg_color">
                                     <div class="input-group py-2 d-flex align-items-center">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text mx-3 border-0 text-secondary">
+                                            <span class="input-group-text mx-3 border-0 text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fa-regular fa-face-smile"></i>
                                             </span>
+                                            <ul class="dropdown-menu new_dropdown_width">
+                                                <ul class="list-unstyled d-flex flex-wrap ps-2">
+                                                    <li v-for="emoji in emojisArray" :key="emoji" class="emoji-item" @click="addEmoji(emoji, $event)">{{ emoji }}</li>
+                                                </ul>
+                                            </ul>
                                         </div>
-                                        <input type="text" class="form-control rounded" placeholder="Scrivi un messaggio" v-model="new_message" @keyup.enter="newMessage()">
+                                        <input ref="messageInput" type="text" class="form-control rounded" placeholder="Scrivi un messaggio" v-model="new_message" @keyup.enter="newMessage()">
                                         <div class="input-group-append">
                                             <span class="input-group-text mx-3 border-0 text-secondary">
                                                 <i class="fa-solid fa-microphone" v-if="new_message === '' "></i>

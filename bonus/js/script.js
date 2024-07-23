@@ -26,7 +26,7 @@ createApp({
                             status: 'received'
                         }
                     ],
-                },{
+                }, {
                     name: 'Fabio',
                     avatar: './img/avatar_2.jpg',
                     visible: true,
@@ -47,7 +47,7 @@ createApp({
                             status: 'sent'
                         }
                     ],
-                },{
+                }, {
                     name: 'Samuele',
                     avatar: './img/avatar_3.jpg',
                     visible: true,
@@ -68,7 +68,7 @@ createApp({
                             status: 'received'
                         }
                     ],
-                },{
+                }, {
                     name: 'Alessandro B.',
                     avatar: './img/avatar_4.jpg',
                     visible: true,
@@ -101,7 +101,7 @@ createApp({
                             status: 'received'
                         }
                     ],
-                },{
+                }, {
                     name: 'Claudia',
                     avatar: './img/avatar_6.jpg',
                     visible: true,
@@ -122,7 +122,7 @@ createApp({
                             status: 'sent'
                         }
                     ],
-                },{
+                }, {
                     name: 'Federico',
                     avatar: './img/avatar_7.jpg',
                     visible: true,
@@ -138,7 +138,7 @@ createApp({
                             status: 'received'
                         }
                     ],
-                },{
+                }, {
                     name: 'Davide',
                     avatar: './img/avatar_8.jpg',
                     visible: true,
@@ -165,6 +165,15 @@ createApp({
             new_message: '',
             contact_search: '',
             filtered_contacts: [],
+            emojisArray: [
+                "😀","😁","😂","😃","😄",
+                "😅","😆","😇","😈","😉",
+                "😊","😋","😌","😍","😎",
+                "😏","😐","😑","😒","😓",
+                "😔","😕","😖","😘","🤡",
+                "🤥","🧐","🤮","🤬","🤫",
+                "🤠","🤑","🤐","😷","😴"
+            ]
         };
     },
     created() {
@@ -183,22 +192,22 @@ createApp({
 
         newMessage() {
             const currentDate = DateTime.now().toFormat('dd/mm/yyyy HH:mm');
-            
+
             let new_message_added = {
                 message: this.new_message,
                 status: 'sent',
                 date: currentDate
             };
-            
+
             let contact_answer = {
                 message: 'Ok',
                 status: 'received',
                 date: currentDate
             };
-            
-            if(this.new_message !== '') {
+
+            if (this.new_message !== '') {
                 this.contacts[this.current_chat].messages.push(new_message_added);
-                
+
                 let last_access = document.getElementById('contact_online');
 
                 setTimeout(() => {
@@ -213,16 +222,16 @@ createApp({
                     this.contacts[this.current_chat].messages.push(contact_answer);
                     last_access.textContent = "Online"
                 }, 4000)
-    
+
                 setTimeout(() => {
                     // let current_hour = this.currentHour();
                     let last_access_hour = this.getLastMessage(this.contacts[this.current_chat])
                     last_access.textContent = "Ultimo accesso oggi alle " + last_access_hour.date.split(' ')[1]
                     console.log(last_access_hour)
                 }, 5000);
-    
+
             }
-            
+
             this.new_message = '';
         },
 
@@ -231,15 +240,25 @@ createApp({
                 contact.name.toLowerCase().includes(this.contact_search.toLowerCase())
             )
         },
-        
+
         getLastMessage(contact) {
             if (contact.messages.length > 0) {
-              return contact.messages[contact.messages.length - 1];
+                return contact.messages[contact.messages.length - 1];
             }
         },
 
         deleteAnyMessage(contactIndex, messageIndex) {
             this.contacts[contactIndex].messages.splice(messageIndex, 1);
-        }
+        },
+
+        addEmoji(emoji, event) {
+            event.stopPropagation()
+
+            this.new_message += emoji;
+
+            this.$nextTick(() => {
+                this.$refs.messageInput.focus();
+            })
+        },
     }
 }).mount('#app')

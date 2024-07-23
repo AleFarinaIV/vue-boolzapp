@@ -124,6 +124,23 @@ li:hover {
     overflow-wrap: break-word;
 }
 
+.user_message p,
+ .contact_message p {
+    font-size: 12px;
+    font-weight: 500;
+    color: black;
+}
+
 i:hover {
     cursor: pointer;
+}
+
+.new_dropdown_width {
+    width: 400px;
+}
+
+.emoji-item {
+    margin: 0px;
+    padding: 0 5px;
+    font-size: 30px;
 }
