@@ -165,7 +165,7 @@ createApp({
             new_message: '',
             contact_search: '',
             filtered_contacts: [],
-            emojisArray: [
+            emojis_array: [
                 "😀","😁","😂","😃","😄",
                 "😅","😆","😇","😈","😉",
                 "😊","😋","😌","😍","😎",
@@ -173,6 +173,13 @@ createApp({
                 "😔","😕","😖","😘","🤡",
                 "🤥","🧐","🤮","🤬","🤫",
                 "🤠","🤑","🤐","😷","😴"
+            ],
+            contact_random_messages: [
+                "Ciao amico","Sisi tutto apposto, grazie!","Senti ma, ti va una partita a Rocket League?",
+                "Oggi andiamo al mare, vieni con noi?","Daje zi","Stasera andiamo al MC, ti passo a prendere per le 8",
+                "È il momento di un po' di gambling, solo io e te!","Stasera ci sei per un calcetto? Ci manca il decimo 😆",
+                "Ciao Fabrizio/Luigi/Alessio se avrete pazienza di provare tutti questi messaggi randomici arriverete anche a questo.\
+                Volevo dirvi che state facendo un ottimo lavoro col corso, daje forte!"
             ]
         };
     },
@@ -200,7 +207,7 @@ createApp({
             };
 
             let contact_answer = {
-                message: 'Ok',
+                message: this.randomContactMessages(),
                 status: 'received',
                 date: currentDate
             };
@@ -260,5 +267,10 @@ createApp({
                 this.$refs.messageInput.focus();
             })
         },
+
+        randomContactMessages() {
+            const randomIndex = Math.floor(Math.random() * this.contact_random_messages.length);
+            return this.contact_random_messages[randomIndex];
+        }
     }
 }).mount('#app')
