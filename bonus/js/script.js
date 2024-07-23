@@ -180,7 +180,7 @@ createApp({
             this.current_chat = this.getContactId(contact);
             console.log('contact clicked', this.current_chat);
         },
-        
+
         newMessage() {
             const currentDate = DateTime.now().toFormat('dd/mm/yyyy HH:mm');
             
@@ -237,5 +237,9 @@ createApp({
               return contact.messages[contact.messages.length - 1];
             }
         },
+
+        deleteAnyMessage(contactIndex, messageIndex) {
+            this.contacts[contactIndex].messages.splice(messageIndex, 1);
+        }
     }
 }).mount('#app')

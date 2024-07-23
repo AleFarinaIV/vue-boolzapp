@@ -60,7 +60,7 @@
                         </div>
                         <!-- Lista contatti -->
                         <div>
-                            <ul>
+                            <ul class="contact_list">
                                 <li id="contact" v-for="elem in filtered_contacts" @click="contactClick(elem)" 
                                  class="border-top py-2" :class="current_chat == getContactId(elem) ? 'clicked' : '' ">
                                     <div class="row">
@@ -248,10 +248,21 @@
                                 <!-- Sezione chat aperta con messaggi inviati e ricevuti -->
                                 <div id="open_chat">
                                     <div class="d-flex flex-column">
-                                        <div v-for="message, index in contacts[current_chat].messages">
-                                            <div class="my-2 p-1 rounded" :class="message.status === 'sent' ? 'user_message' : 'contact_message'">
+                                        <div v-for="message, messageIndex in contacts[current_chat].messages">
+                                            <div class="d-flex justify-content-between my-2 p-1 rounded" :class="message.status === 'sent' ? 'user_message' : 'contact_message'">
                                                 <p class="m-1">{{ message.message }}</p>
-                                                <p class="m-0 text-end text-secondary">{{message.date.split(' ')[1] }}</p>
+                                                <div>
+                                                    <div class="dropdown text-end me-1">
+                                                        <button class="border-0 btn btn-sm p-0 ms-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fa-solid fa-angle-down text-secondary"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a class="dropdown-item" href="#">Message info</a></li>
+                                                            <li><a class="dropdown-item" href="#" @click="deleteAnyMessage(current_chat, messageIndex)">Delete Message</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="m-0 text-end text-secondary">{{message.date.split(' ')[1] }}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -284,6 +295,7 @@
         </div>
 
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
         <script src="./js/script.js"></script>
     </body>
