@@ -1,4 +1,5 @@
 const { createApp } = Vue;
+const { DateTime } = luxon;
 
 createApp({
     data() {
@@ -161,7 +162,7 @@ createApp({
                 }
             ],
             current_chat: 0,
-            new_message: null,
+            new_message: '',
             contact_search: '',
             filtered_contacts: [],
         };
@@ -170,6 +171,7 @@ createApp({
         this.filterContacts();
     },
     methods: {
+
         getContactId(contact) {
             return this.contacts.indexOf(contact);
         },
@@ -178,33 +180,62 @@ createApp({
             this.current_chat = this.getContactId(contact);
             console.log('contact clicked', this.current_chat);
         },
+        
         newMessage() {
+            const currentDate = DateTime.now().toFormat('dd/mm/yyyy HH:mm');
+            
             let new_message_added = {
                 message: this.new_message,
                 status: 'sent',
+                date: currentDate
             };
-
+            
             let contact_answer = {
                 message: 'Ok',
                 status: 'received',
+                date: currentDate
             };
             
-            if(!this.new_message == '') {
+            if(this.new_message !== '') {
                 this.contacts[this.current_chat].messages.push(new_message_added);
+                
+                let last_access = document.getElementById('contact_online');
+
+                setTimeout(() => {
+                    last_access.textContent = "Online"
+                }, 1000);
+
+                setTimeout(() => {
+                    last_access.textContent = "Sta scrivendo..."
+                }, 2000);
 
                 setTimeout(() => {
                     this.contacts[this.current_chat].messages.push(contact_answer);
-                }, 1000);
-
+                    last_access.textContent = "Online"
+                }, 4000)
+    
+                setTimeout(() => {
+                    // let current_hour = this.currentHour();
+                    let last_access_hour = this.getLastMessage(this.contacts[this.current_chat])
+                    last_access.textContent = "Ultimo accesso oggi alle " + last_access_hour.date.split(' ')[1]
+                    console.log(last_access_hour)
+                }, 5000);
+    
             }
             
-            this.new_message = null;
+            this.new_message = '';
         },
 
         filterContacts() {
             this.filtered_contacts = this.contacts.filter(contact =>
                 contact.name.toLowerCase().includes(this.contact_search.toLowerCase())
             )
-        },        
+        },
+        
+        getLastMessage(contact) {
+            if (contact.messages.length > 0) {
+              return contact.messages[contact.messages.length - 1];
+            }
+        },
     }
 }).mount('#app')
